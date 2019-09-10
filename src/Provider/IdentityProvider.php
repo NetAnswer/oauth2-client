@@ -105,7 +105,7 @@ abstract class IdentityProvider
     public function getAccessToken($grant = 'authorization_code', $params = array())
     {
         if (is_string($grant)) {
-            $grant = 'League\\OAuth2\\Client\\Grant\\'.ucfirst(str_replace('_', '', $grant));
+            $grant = 'League\\OAuth2\\Client\\Grant\\'.str_replace(' ', '', ucwords(str_replace('_', ' ', $grant)));
             if ( ! class_exists($grant)) {
                 throw new \InvalidArgumentException('Unknown grant "'.$grant.'"');
             }
